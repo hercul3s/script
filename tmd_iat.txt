@@ -19,8 +19,6 @@ jmp arama
 
 //
 arama:
-//ticnd adresi,0x100
-//find cip,"FF25????????"
 cmp 2:[cip], "25FF"
 je found
 cmp 3:[cip], "000CC2"
@@ -30,13 +28,11 @@ jne findinge
 
 found:
 sti
-log "found: {0}", $result //
 mov [iat_start],cip
 iat_start = iat_start+4
 cmp iat_start,00C4D664
 je finish
 jmp loopz
-
 
 finish:
 log "bitti"
